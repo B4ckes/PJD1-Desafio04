@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     const int SPEED = 5;
     ArrayList tools = new ArrayList();
+    Joystick joystick;
 
     public ToolType currentTool { get; private set; } = ToolType.Flashlight;
     public Transform toolSpawnerPosition { get; set; }
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     void Awake()
     {
         GameObject toolSpawner = GameObject.FindGameObjectWithTag("ToolSpawner");
+        this.joystick = GameObject.FindObjectOfType<Joystick>();
 
         this.toolSpawnerPosition = toolSpawner.transform;
     }
@@ -24,8 +26,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     void move() {
-        float horizontalMovement = Input.GetAxisRaw("Horizontal");
-        float verticalMovement = Input.GetAxisRaw("Vertical");
+        float horizontalMovement = this.joystick.Horizontal;
+        float verticalMovement = this.joystick.Vertical;
 
         transform.position += new Vector3(horizontalMovement * SPEED * Time.deltaTime, verticalMovement * SPEED * Time.deltaTime, 0);
 

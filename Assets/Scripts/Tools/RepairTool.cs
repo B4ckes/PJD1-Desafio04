@@ -11,6 +11,7 @@ public class RepairTool : BaseTool
         base.Awake();
         this.name = "RepairTool";
         this.type = ToolType.RepairTool;
+        this.useButton = GameObject.FindObjectOfType<UseButtonController>();
     }
 
     public override void action() {

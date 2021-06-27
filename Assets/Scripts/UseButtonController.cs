@@ -3,30 +3,18 @@ using UnityEngine.EventSystems;
 
 public class UseButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private bool isPointerDown = false;
+    private GameController gameController;
 
-    public GameController gameController;
-
-    bool isCurrentToolFlashlight() {
-        return this.gameController.currentTool == ToolType.Flashlight;
-    }
-
-    void Update()
+    void Awake()
     {
-        if (this.isPointerDown && !isCurrentToolFlashlight()) {
-            this.gameController.doToolAction();
-        }
+        this.gameController = GameController.FindObjectOfType<GameController>();
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        if (isCurrentToolFlashlight()) {
-            this.gameController.doToolAction();
-        }
-
-        this.isPointerDown = true;
+        this.gameController.doToolAction();
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        this.isPointerDown = false;
+        this.gameController.stopToolAction();
     }
 }

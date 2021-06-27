@@ -56,16 +56,28 @@ public class GameController : MonoBehaviour
 
     public void doToolAction() {
         if (player.currentTool == flashlight.type) {
-            flashlight.action();
+            this.flashlight.action();
         }
         if (player.currentTool == scanner.type) {
-            scanner.action();
+            this.scanner.action();
         }
         if (player.currentTool == repairTool.type) {
-            repairTool.action();
+            this.repairTool.action();
         }
         if (player.currentTool == laserTool.type) {
-            laserTool.action();
+            this.laserTool.action();
+        }
+    }
+
+    public void stopToolAction() {
+        if (player.currentTool == scanner.type) {
+            this.scanner.stopAction();
+        }
+        if (player.currentTool == repairTool.type) {
+            this.repairTool.stopAction();
+        }
+        if (player.currentTool == laserTool.type) {
+            this.laserTool.stopAction();
         }
     }
 }

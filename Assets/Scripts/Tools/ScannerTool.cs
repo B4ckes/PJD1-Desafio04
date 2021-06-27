@@ -10,6 +10,7 @@ public class ScannerTool : BaseTool
         base.Awake();
         this.name = "Scanner";
         this.type = ToolType.ScannerTool;
+        this.useButton = GameObject.FindObjectOfType<UseButtonController>();
     }
 
     public override void action() {

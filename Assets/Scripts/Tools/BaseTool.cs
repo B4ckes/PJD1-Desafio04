@@ -19,21 +19,20 @@ public class BaseTool : MonoBehaviour {
     protected Vector2 direction = new Vector2(1f, 0);
     protected IEnumerator coroutine;
 
+    protected UseButtonController useButton;
+
     protected virtual void Awake() {
         this.name = "Base tool";
         this.type = ToolType.None;
-    }
-
-    void Update() {
-        this.stopCoroutine();
+        this.useButton = GameObject.FindObjectOfType<UseButtonController>();
     }
 
     public virtual void action() {
         Debug.Log("Base tool has no action.");
     }
 
-    void stopCoroutine() {
-        if (Input.GetMouseButtonUp(1) && this.coroutine != null) {
+    public void stopAction() {
+        if (this.coroutine != null) {
             StopCoroutine(this.coroutine);
         }
     }

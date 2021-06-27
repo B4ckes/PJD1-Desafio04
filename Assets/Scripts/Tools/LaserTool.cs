@@ -9,6 +9,7 @@ public class LaserTool : BaseTool
         base.Awake();
         this.name = "LaserCutter";
         this.type = ToolType.LaserTool;
+        this.useButton = GameObject.FindObjectOfType<UseButtonController>();
     }
 
     public override void action() {
